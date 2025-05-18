@@ -6,6 +6,7 @@ import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import pembayaranRoutes from './routes/pembayaranRoutes.js'
 import kategoriKelasRoutes from './routes/kategoriKelasRoutes.js'
+import tutorRoutes from './routes/tutorRoutes.js'
 
 dotenv.config()
 
@@ -16,6 +17,7 @@ app.use('/api/users', userRoutes)
 app.use('/api/orders', orderRoutes)
 app.use('/api/pembayarans', pembayaranRoutes)
 app.use('/api/kategori_kelas', kategoriKelasRoutes)
+app.use('/api/tutors', tutorRoutes)
 
 app.use(errorHandler)
 
