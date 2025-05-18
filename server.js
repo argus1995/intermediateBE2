@@ -8,6 +8,7 @@ import pembayaranRoutes from './routes/pembayaranRoutes.js'
 import kategoriKelasRoutes from './routes/kategoriKelasRoutes.js'
 import tutorRoutes from './routes/tutorRoutes.js'
 import kelasRoutes from './routes/kelasRoutes.js'
+import modulKelasRoutes from './routes/modulKelasRoutes.js'
 
 dotenv.config()
 
@@ -20,6 +21,7 @@ app.use('/api/pembayarans', pembayaranRoutes)
 app.use('/api/kategori_kelas', kategoriKelasRoutes)
 app.use('/api/tutors', tutorRoutes)
 app.use('/api/kelas', kelasRoutes)
+app.use('/api/modul_kelas', modulKelasRoutes)
 
 app.use(errorHandler)
 
