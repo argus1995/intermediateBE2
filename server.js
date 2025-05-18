@@ -5,6 +5,7 @@ import errorHandler from './middleware/errorHandler.js'
 import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import pembayaranRoutes from './routes/pembayaranRoutes.js'
+import kategoriKelasRoutes from './routes/kategoriKelasRoutes.js'
 
 dotenv.config()
 
@@ -14,6 +15,7 @@ app.use(express.json())
 app.use('/api/users', userRoutes)
 app.use('/api/orders', orderRoutes)
 app.use('/api/pembayarans', pembayaranRoutes)
+app.use('/api/kategori_kelas', kategoriKelasRoutes)
 
 app.use(errorHandler)
 
