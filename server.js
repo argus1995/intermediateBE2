@@ -12,6 +12,7 @@ import modulKelasRoutes from './routes/modulKelasRoutes.js'
 import materialRoutes from './routes/materialRoutes.js'
 import pretestRoutes from './routes/pretestRoutes.js'
 import detailOrderRoutes from './routes/detailOrderRoutes.js'
+import reviewRoutes from './routes/reviewRoutes.js'
 
 dotenv.config()
 
@@ -28,6 +29,7 @@ app.use('/api/modul_kelas', modulKelasRoutes)
 app.use('/api/materials', materialRoutes)
 app.use('/api/pretests', pretestRoutes)
 app.use('/api/detail_orders', detailOrderRoutes)
+app.use('/api/reviews', reviewRoutes)
 
 app.use(errorHandler)
 
