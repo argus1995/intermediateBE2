@@ -14,5 +14,5 @@ app.use('/api/orders', orderRoutes)
 
 app.use(errorHandler)
 
-const PORT = process.env.PORT || 3000
-app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`))
+const DB_PORT = process.env.DB_PORT || 3000
+app.listen(DB_PORT, () => console.log(`Server running at http://localhost:${PORT}`))
