@@ -6,4 +6,4 @@ export const create = (data) => db.query('INSERT INTO user (nama, email, passwor
 export const update = (id, data) => db.query('UPDATE user SET nama = ?, email = ?, password = ? WHERE user_id = ?', [data.nama, data.email, data.password, id])
 export const remove = (id) => db.query('DELETE FROM user WHERE user_id = ?', [id])
 
-
+export const getByEmail = (email) => db.query('SELECT * FROM user WHERE email = ?', [email])
