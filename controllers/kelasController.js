@@ -2,8 +2,9 @@ import * as Kelas from '../models/kelasModel.js'
 
 export const getKelass = async (req, res, next) => {
     try {
-        const [rows] = await Kelas.getAll()
-        res.json(rows)
+        const { tutor, sortBy = 'kelas.nama_kelas', order = 'desc', search } = req.query
+        const kelas = await Kelas.getFilteredKelas({ tutor, sortBy, order, search })
+        res.json(kelas)
     } catch (err) {
         next(err)
     }
