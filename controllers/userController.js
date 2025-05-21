@@ -2,6 +2,8 @@ import * as User from '../models/userModel.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
+import { sendWelcomeEmail } from '../utils/mailer.js'
+import { v4 as uuidv4 } from 'uuid'
 
 dotenv.config()
 
@@ -29,9 +31,33 @@ export const createUser = async (req, res, next) => {
         if (!nama || !email || !password) return res.status(400).json({ error: 'Missing required fields'})
         
         const hashedPassword = await bcrypt.hash(password, 10)
+        const verificationToken = uuidv4()
 
-        await User.create({ nama, email, password: hashedPassword })
-        res.status(201).json({ message: 'User created' })
+        await User.create({ nama, email, password: hashedPassword, verificationToken })
+
+        await sendWelcomeEmail(email, nama, verificationToken)
+
+        res.status(201).json({ message: 'User created and welcome email sent' })
+    } catch (err) {
+        next(err)
+    }
+}
+
+export const verifyEmail = async (req, res, next) => {
+    try {
+        const { token } = req.query
+        if (!token) {
+            return res.status(400).json({ message: 'Verification token missing' })
+        }
+
+        const [rows] = await User.findUserByToken(token)
+        const user = rows[0]
+        if (!user) {
+            return res.status(400).json({ message: 'Invalid token' })
+        }
+
+        await User.verifyUser(user.user_id)
+        res.json({ message: 'Email verified successfully' })
     } catch (err) {
         next(err)
     }
