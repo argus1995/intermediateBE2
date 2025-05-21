@@ -14,6 +14,7 @@ import pretestRoutes from './routes/pretestRoutes.js'
 import detailOrderRoutes from './routes/detailOrderRoutes.js'
 import reviewRoutes from './routes/reviewRoutes.js'
 import kelasSayaRoutes from './routes/kelasSayaRoutes.js'
+import uploadRoutes from './routes/uploadRoutes.js'
 
 dotenv.config()
 
@@ -32,6 +33,8 @@ app.use('/api/pretests', pretestRoutes)
 app.use('/api/detail_orders', detailOrderRoutes)
 app.use('/api/reviews', reviewRoutes)
 app.use('/api/kelas_saya', kelasSayaRoutes)
+app.use('/api', uploadRoutes)
+app.use('/uploads', express.static('uploads'))
 
 app.use(errorHandler)
 
